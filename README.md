@@ -56,7 +56,9 @@ Release plugin version and configuration are taken care of by the parent pom.
 1. Install GPG
 
   ```
-  brew install gpg2 gpg-agent
+  brew install gpg2 gpg-agent pinentry-mac
+  # setup pinentry for gpg-agent
+  echo "pinentry-program /usr/local/bin/pinentry-mac" > ~/.gnupg/gpg-agent.conf
   ```
 
 1. Create a GPG key and publish it
@@ -82,7 +84,8 @@ Release plugin version and configuration are taken care of by the parent pom.
         ...
 
     ```bash
-    gpg2 --keyserver hkp://pool.sks-keyservers.net --send-keysABCDEF12
+    # use the key id as shown by gpg2 --list-keys
+    gpg2 --keyserver hkp://pool.sks-keyservers.net --send-keys ABCDEF12
     ```
 
 1. Add the required server entries to your maven `settings.xml` file.
@@ -99,7 +102,7 @@ Release plugin version and configuration are taken care of by the parent pom.
     ```
 
     See [password encryption](http://maven.apache.org/guides/mini/guide-encryption.html)
-    information on how to encrypt your maven passwords.
+    for information on how to encrypt your maven passwords.
 
   - Add the following ossrh profile to the `<profiles>` list.
 
@@ -120,6 +123,9 @@ Release plugin version and configuration are taken care of by the parent pom.
 At the root of your project, do the following
 
 ```bash
+# Make sure gpg-agent is running
+eval $(gpg-agent --daemon)
+
 # Prepare your release
 mvn release:clean release:prepare
 
@@ -138,13 +144,10 @@ mvn -Prelease nexus-staging:release
 ***Note:** this is only required if you need to make changes to the parent pom.
 To deploy artifacts using the parent pom, see above.
 
-1. Make sure gpg-agent is running
-
-```
-eval $(gpg-agent --daemon)
-```
-
 ```bash
+# Make sure gpg-agent is running
+eval $(gpg-agent --daemon)
+
 # Prepare a release for the parent pom
 mvn release:prepare
 
