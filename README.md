@@ -55,8 +55,10 @@ Release plugin version and configuration are taken care of by the parent pom.
 
 1. Install GPG
 
-  ```
+  ```bash
+  # install gpg and friends
   brew install gpg2 gpg-agent pinentry-mac
+  
   # setup pinentry for gpg-agent
   echo "pinentry-program /usr/local/bin/pinentry-mac" >> ~/.gnupg/gpg-agent.conf
   ```
