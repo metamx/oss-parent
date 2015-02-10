@@ -92,12 +92,12 @@ Release plugin version and configuration are taken care of by the parent pom.
 
 1. Add the required server entries to your maven `settings.xml` file.
 
-  - Add the `ossrh` server entry to the `<servers>` list.  Replace `username` and `password` with your Sonatype username and password.
+  - Add the `sonatype-nexus-staging` server entry to the `<servers>` list.  Replace `username` and `password` with your Sonatype username and password.
 
     ```xml
-    <!-- OSSRH -->
+    <!-- sonatype-nexus-staging -->
     <server>
-      <id>ossrh</id>
+      <id>sonatype-nexus-staging</id>
       <username>username</username>
       <password>mypassword</password>
     </server>
@@ -106,11 +106,11 @@ Release plugin version and configuration are taken care of by the parent pom.
     See [password encryption](http://maven.apache.org/guides/mini/guide-encryption.html)
     for information on how to encrypt your maven passwords.
 
-  - Add the following ossrh profile to the `<profiles>` list.
+  - Add the following sonatype-nexus-staging profile to the `<profiles>` list.
 
     ```xml
     <profile>
-        <id>ossrh</id>
+        <id>sonatype-nexus-staging</id>
         <activation>
             <activeByDefault>true</activeByDefault>
         </activation>
