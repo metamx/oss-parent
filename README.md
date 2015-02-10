@@ -132,40 +132,12 @@ eval $(gpg-agent --daemon)
 mvn release:clean release:prepare
 
 # Perform release
-mvn release:perform -Dgpg.useagent=true
+mvn release:perform
 
 # If the release looks good, promote the artifact from staging to release
-cd target/checkout
-mvn -Prelease nexus-staging:release
+cd target/checkout && mvn -Prelease nexus-staging:release
 ```
 
-## Making changes to the parent POM
+## Publishing changes to the parent POM
 
-### How to publish the parent POM to Sonatype
-
-***Note:** this is only required if you need to make changes to the parent pom.
-To deploy artifacts using the parent pom, see above.
-
-```bash
-# Make sure gpg-agent is running
-eval $(gpg-agent --daemon)
-
-# Prepare a release for the parent pom
-mvn release:prepare
-
-# Check out the tag for the version we just created
-git checkout $(git tag -l --sort=version:refname | tail -1)
-
-# Extract the version for the tag
-export version=$(xpath pom.xml "/project/version/text()" 2>/dev/null)
-
-# Create  a symbolic link to the pom with the right version
-ln -s pom.xml oss-parent-${version}.xml
-
-# Sign and publish the the pom
-mvn gpg:sign-and-deploy-file \
-  -Durl=https://oss.sonatype.org/service/local/staging/deploy/maven2/ \
-  -DrepositoryId=ossrh \
-  -DpomFile=oss-parent-${version}.xml \
-  -Dfile=oss-parent-${version}.xml
-```
+The parent pom can be published to Sonatype using the same steps described above.
