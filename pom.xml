@@ -25,7 +25,7 @@
 
     <name>Metamarkets OSS Parent</name>
     <description>Metamarkets Parent POM</description>
-    <url>https://github.com/metamx/metamx-parents</url>
+    <url>https://github.com/metamx/oss-parent</url>
 
     <licenses>
       <license>
@@ -44,9 +44,9 @@
     </developers>
 
     <scm>
-        <connection>scm:git:ssh://git@github.com/metamx/parents.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/metamx/parents.git</developerConnection>
-        <url>https://github.com/metamx/parents.git</url>
+        <connection>scm:git:ssh://git@github.com/metamx/oss-parent.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/metamx/oss-parent.git</developerConnection>
+        <url>https://github.com/metamx/oss-parent.git</url>
         <tag>HEAD</tag>
     </scm>
 
