@@ -125,7 +125,7 @@ Release plugin version and configuration are taken care of by the parent pom.
 At the root of your project, do the following
 
 ```bash
-# Make sure gpg-agent is running
+# Make sure gpg-agent is running (this won't print anything)
 eval $(gpg-agent --daemon)
 
 # Prepare your release
@@ -133,6 +133,8 @@ mvn release:clean release:prepare
 
 # Perform release
 mvn release:perform
+
+# During release:perform you will be prompted for your gpg passphrase
 
 # If the release looks good, promote the artifact from staging to release
 cd target/checkout && mvn -Prelease nexus-staging:release
