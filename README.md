@@ -143,3 +143,18 @@ cd target/checkout && mvn -Prelease nexus-staging:release
 ## Publishing changes to the parent POM
 
 The parent pom can be published to Sonatype using the same steps described above.
+
+### Release Candidates
+
+For more popular open source repositories, we declare a release candidate to let the community test things before declaring a stable release.
+
+The process for releasing a release candidate
+```bash
+# Make sure gpg-agent is running (this won't print anything)
+eval $(gpg-agent --daemon)
+
+# Prepare your release
+mvn release:clean release:prepare
+```
+
+If the open source project is not hosted under metamx/, make sure to update the metamx/ fork. Run the jenkins build job for the project and change 'Branch' to reflect your project's latest tag.
