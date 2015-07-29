@@ -20,7 +20,7 @@
 
     <groupId>com.metamx</groupId>
     <artifactId>oss-parent</artifactId>
-    <version>2-SNAPSHOT</version>
+    <version>2</version>
     <packaging>pom</packaging>
 
     <name>Metamarkets OSS Parent</name>
@@ -47,7 +47,7 @@
         <connection>scm:git:ssh://git@github.com/metamx/oss-parent.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/metamx/oss-parent.git</developerConnection>
         <url>https://github.com/metamx/oss-parent.git</url>
-        <tag>HEAD</tag>
+        <tag>oss-parent-2</tag>
     </scm>
 
     <build>
