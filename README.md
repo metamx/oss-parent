@@ -8,7 +8,7 @@ Add the following snippet at the top of your project pom.
 <parent>
     <groupId>com.metamx</groupId>
     <artifactId>oss-parent</artifactId>
-    <version>1</version>
+    <version>3</version>
 </parent>
 ```
 
